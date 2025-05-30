@@ -68,7 +68,7 @@ local filetype_attach = setmetatable({
   typescript = function()
     autocmd_format(false, function(clients)
       return vim.tbl_filter(function(client)
-        return client.name ~= "tsserver"
+        return client.name ~= "ts_ls"
       end, clients)
     end)
   end,
@@ -103,10 +103,14 @@ local custom_attach = function(client)
     nvim_status.on_attach(client)
   end
 
+	-- vim.keymap.del('n', '<C-W><C-D>')
+	-- vim.keymap.del('n', '<C-W>d')
+
   buf_inoremap { "<c-s>", vim.lsp.buf.signature_help }
 
-  buf_nnoremap { "<space>cr", vim.lsp.buf.rename }
+  buf_nnoremap { "<space>rn", vim.lsp.buf.rename }
   buf_nnoremap { "<space>ca", vim.lsp.buf.code_action }
+	buf_nnoremap { "<space>d", vim.diagnostic.open_float }
 
   buf_nnoremap { "gd", vim.lsp.buf.definition }
   buf_nnoremap { "gD", vim.lsp.buf.declaration }
@@ -128,6 +132,7 @@ local custom_attach = function(client)
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
   -- Set autocommands conditional on server_capabilities
+	-- colors for LSP diagnostics
   if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_exec([[
 			hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=#404040
@@ -168,10 +173,11 @@ updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
 
 -- vim.lsp.buf_request(0, "textDocument/codeLens", { textDocument = vim.lsp.util.make_text_document_params() })
 
+require("mason").setup()
+
 local servers = {
 	bashls = true,
 	dockerls = true,
-  gdscript = true,
   html = true,
   pyright = true,
   vimls = true,
@@ -232,7 +238,7 @@ local servers = {
   elmls = true,
   cssls = true,
 
-  tsserver = {
+  ts_ls = {
     init_options = ts_util.init_options,
     cmd = { "typescript-language-server", "--stdio" },
     filetypes = {
@@ -251,6 +257,14 @@ local servers = {
       ts_util.setup_client(client)
     end,
   },
+
+	lua_ls = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+		},
+	},
+
 }
 
 local setup_server = function(server, config)
@@ -278,66 +292,66 @@ for server, config in pairs(servers) do
   setup_server(server, config)
 end
 
-if is_mac then
-  local sumneko_cmd, sumneko_env = nil, nil
-  require("nvim-lsp-installer").setup {
-    automatic_installation = false,
-    ensure_installed = { "sumneko_lua" },
-  }
+-- if is_mac then
+--   local sumneko_cmd, sumneko_env = nil, nil
+--   -- require("nvim-lsp-installer").setup {
+--   --   automatic_installation = false,
+--   --   ensure_installed = { "sumneko_lua" },
+--   -- }
 
-  sumneko_cmd = {
-    vim.fn.stdpath "data" .. "/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server",
-  }
+--   sumneko_cmd = {
+--     vim.fn.stdpath "data" .. "/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server",
+--   }
 
-  local process = require "nvim-lsp-installer.core.process"
-  local path = require "nvim-lsp-installer.core.path"
+--   -- local process = require "mason.core.process"
+--   -- local path = require "mason.core.path"
 
-  sumneko_env = {
-    cmd_env = {
-      PATH = process.extend_path {
-        path.concat { vim.fn.stdpath "data", "lsp_servers", "sumneko_lua", "extension", "server", "bin" },
-      },
-    },
-  }
+--   -- sumneko_env = {
+--   --   cmd_env = {
+--   --     PATH = process.extend_path {
+--   --       path.concat { vim.fn.stdpath "data", "lsp_servers", "sumneko_lua", "extension", "server", "bin" },
+--   --     },
+--   --   },
+--   -- }
 
-  setup_server("sumneko_lua", {
-    settings = {
-      Lua = {
-      --   diagnostics = {
-      --     globals = {
-      --       -- Colorbuddy
-      --       "Color",
-      --       "c",
-      --       "Group",
-      --       "g",
-      --       "s",
+--   setup_server("sumneko_lua", {
+--     settings = {
+--       Lua = {
+--       --   diagnostics = {
+--       --     globals = {
+--       --       -- Colorbuddy
+--       --       "Color",
+--       --       "c",
+--       --       "Group",
+--       --       "g",
+--       --       "s",
 
-      --       -- Custom
-      --       "RELOAD",
-      --     },
-      --   },
+--       --       -- Custom
+--       --       "RELOAD",
+--       --     },
+--       --   },
 
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-        },
-      },
-    },
-  })
-else
-  -- Load lua configuration from nlua.
-  _ = require("nlua.lsp.nvim").setup(lspconfig, {
-    cmd = sumneko_cmd,
-    cmd_env = sumneko_env,
-    on_init = custom_init,
-    on_attach = custom_attach,
-    capabilities = updated_capabilities,
+--         workspace = {
+--           -- Make the server aware of Neovim runtime files
+--           library = vim.api.nvim_get_runtime_file("", true),
+--         },
+--       },
+--     },
+--   })
+-- else
+--   -- Load lua configuration from nlua.
+--   _ = require("nlua.lsp.nvim").setup(lspconfig, {
+--     cmd = sumneko_cmd,
+--     cmd_env = sumneko_env,
+--     on_init = custom_init,
+--     on_attach = custom_attach,
+--     capabilities = updated_capabilities,
 
-    root_dir = function(fname)
-      return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
-    end,
-  })
-end
+--     root_dir = function(fname)
+--       return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
+--     end,
+--   })
+-- end
 
 local signs = {
     Error = " ",
@@ -352,11 +366,11 @@ for type, icon in pairs(signs) do
 end
 
 -- vim.cmd("hi DiagnosticError guifg=#995977") 
-vim.cmd("hi DiagnosticError guifg=#b8497d") 
+vim.cmd("hi DiagnosticError guifg=#b8497d")
 -- vim.cmd("hi DiagnosticWarn guifg=#a69883") 
-vim.cmd("hi DiagnosticWarn guifg=#b89e77") 
-vim.cmd("hi DiagnosticHint guifg=#909090") 
-vim.cmd("hi DiagnosticInfo guifg=#909090") 
+vim.cmd("hi DiagnosticWarn guifg=#b89e77")
+vim.cmd("hi DiagnosticHint guifg=#909090")
+vim.cmd("hi DiagnosticInfo guifg=#909090")
 
 return {
   on_init = custom_init,

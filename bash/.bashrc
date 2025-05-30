@@ -213,3 +213,4 @@ bind '"\C-q": "cdf\n"'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 alias luamake=/home/kush/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
+. "$HOME/.cargo/env"

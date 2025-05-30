@@ -41,11 +41,12 @@ let s:gray4 = '#6a6c6c'
 let s:gray5 = '#969696'
 " let s:indigo = '#7681de'
 " let s:indigo = '#9383da'
-let s:indigo = '#9484db'
+" let s:indigo = '#9484db'
+let s:indigo = '#b19bca'
 let s:red = "#995977"
 let s:orange = "#a69883"
 let s:yellow = "#b8a683"
-let s:green = "#a69883"
+let s:green = "#a19883"
 let s:aqua = "#81a2be"
 let s:blue = "#8787af"
 let s:purple = "#9f739b"
@@ -118,6 +119,10 @@ call s:HL('Constant',                       s:orange,   '',         '')
 call s:HL('String',                         s:green,    '',         '')
 call s:HL('Character',                      s:green,    '',         '')
 call s:HL('Identifier',                     s:red,      '',         'none')
+call s:HL('@variable',                      s:red,      '',         'none')
+call s:HL('@parameter',                     s:red,      '',         'none')
+call s:HL('@punctuation',                   s:purple,   '',         'none')
+call s:HL('@attribute',                     s:blue,     '',         'none')
 call s:HL('Function',                       s:blue,     '',         '')
 call s:HL('Statement',                      s:purple,   '',         'none')
 call s:HL('Operator',                       s:cyan,     '',         '')

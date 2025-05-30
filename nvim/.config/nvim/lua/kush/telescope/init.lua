@@ -53,7 +53,7 @@ function M.edit_neovim()
   require("telescope.builtin").find_files(opts)
 end
 
-function M.buffers() 
+function M.buffers()
 	local opts = {
 		results_title = "",
 		layout_strategy = "flex",
@@ -102,9 +102,48 @@ function M.curbuf()
 				},
 			},
 		},
-    border = false,
   }
   require("telescope.builtin").current_buffer_fuzzy_find(opts)
+end
+
+function M.live_grep()
+  require("telescope.builtin").live_grep {
+		layout_config = {
+			width = 0.6,
+			height = 0.7,
+
+			prompt_position = "top",
+
+			horizontal = {
+				width = { padding = 0.15 },
+			},
+			vertical = {
+				preview_height = 0.75,
+			},
+			flex = {
+				horizontal = {
+					preview_width = 0.9,
+				},
+			},
+		},
+    -- shorten_path = true,
+    previewer = false,
+    fzf_separator = "|>",
+  }
+end
+
+function M.grep_last_search(opts)
+  opts = opts or {}
+
+  -- \<getreg\>\C
+  -- -> Subs out the search things
+  local register = vim.fn.getreg("/"):gsub("\\<", ""):gsub("\\>", ""):gsub("\\C", "")
+
+  opts.path_display = { "shorten" }
+  opts.word_match = "-w"
+  opts.search = register
+
+  require("telescope.builtin").grep_string(opts)
 end
 
 -- git_files if it's a git dir, otherwise find_files
@@ -130,7 +169,7 @@ function M.project_files()
 				},
 			},
 		},
-	} 
+	}
   local ok = pcall(require"telescope.builtin".git_files, opts)
   if not ok then require"telescope.builtin".find_files(opts) end
 end

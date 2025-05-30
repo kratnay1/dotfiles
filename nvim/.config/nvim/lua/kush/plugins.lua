@@ -44,11 +44,12 @@ return require("packer").startup(function(use)
 
 	-- LSP
 	use "neovim/nvim-lspconfig"
+	use { "williamboman/mason.nvim" }
 	use "j-hui/fidget.nvim"
 	use "nvim-lua/lsp_extensions.nvim"
 	use "onsails/lspkind-nvim"
 	use "jose-elias-alvarez/nvim-lsp-ts-utils"
-	use "simrat39/rust-tools.nvim"
+	-- use "simrat39/rust-tools.nvim" -- temporarily disable until I set it up
 	use "tjdevries/nlua.nvim"
 	use {
 		"folke/lsp-trouble.nvim",
@@ -77,10 +78,11 @@ return require("packer").startup(function(use)
 	use "hrsh7th/cmp-nvim-lsp"
 	use "hrsh7th/cmp-nvim-lsp-document-symbol"
 	use "saadparwaiz1/cmp_luasnip"
+	use "L3MON4D3/LuaSnip"
 	-- Comparators
 	use "lukas-reineke/cmp-under-comparator"
 	-- Extras
-	use "tjdevries/complextras.nvim" 
+	use "tjdevries/complextras.nvim"
 
 	-- treesitter
 	use {
@@ -88,12 +90,24 @@ return require("packer").startup(function(use)
 		run = ":TSUpdate"
 	}
 
+	-- autopairs
+	use "m4xshen/autoclose.nvim"
+
+	-- autotag 
+	use "windwp/nvim-ts-autotag"
+
 	-- fzf
 	use { "junegunn/fzf", run = "./install --all" }
 	use { "junegunn/fzf.vim" }
 
+	-- harpooon (mark and jump between key files)
+	use "theprimeagen/harpoon"
+
 	-- font icons 
 	use "kyazdani42/nvim-web-devicons"
+
+	-- tree
+	use "nvim-tree/nvim-tree.lua"
 
 	-- bufferline 
 	use { "akinsho/bufferline.nvim", tag = "v2.*" }
@@ -111,7 +125,7 @@ return require("packer").startup(function(use)
 	use "vimpostor/vim-tpipeline"
 
 	-- adds a git gutter to indicate modified lines
-	use "airblade/vim-gitgutter"
+	-- use "airblade/vim-gitgutter"
 
 	-- simple folding for python
 	use "tmhedberg/SimpylFold"
@@ -130,6 +144,15 @@ return require("packer").startup(function(use)
 
 	-- syntax highlighting and indenting for React (jsx, tsx)
 	use "maxmellon/vim-jsx-pretty"
+
+	-- vim practice
+	use "ThePrimeagen/vim-be-good"
+
+	-- colorschemes
+	use { "catppuccin/nvim", as = "catppuccin" }
+	use { 'embark-theme/vim', as = 'embark' }
+	use { 'RRethy/base16-nvim' }
+	use { "rose-pine/neovim", as = "rose-pine"}
 
 	if packer_bootstrap then
 		require("packer").sync()

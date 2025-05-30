@@ -37,6 +37,11 @@ map_tele("<c-q>", "buffers")
 map_tele("<space>fb", "file_browser")
 map_tele("<space>fa", "search_all_files")
 
+-- search
+map_tele("<c-f>", "curbuf")
+map_tele("<c-s-f>", "live_grep")
+map_tele("<space>/", "grep_last_search")
+
 -- Git
 map_tele("<space>gs", "git_status")
 map_tele("<space>gc", "git_commits")
