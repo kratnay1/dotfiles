@@ -15,34 +15,12 @@ let g:quantum_italics = get(g:, 'quantum_italics', 0)
 let g:quantum_black = get(g:, 'quantum_black', 0)
 
 " Color Palette
-" let s:gray1     = g:quantum_black ? '#212121' : '#263238'
-" let s:gray2     = g:quantum_black ? '#292929' : '#2c3a41'
-" let s:gray3     = g:quantum_black ? '#474646' : '#425762'
-" let s:gray4     = g:quantum_black ? '#6a6c6c' : '#658494'
-" let s:gray5     = g:quantum_black ? '#b7bdc0' : '#aebbc5'
-" let s:red       = '#dd7186'
-" let s:green     = '#87bb7c'
-" let s:yellow    = '#d5b875'
-" let s:blue      = '#70ace5'
-" let s:purple    = '#a48add'
-" let s:cyan      = '#69c5ce'
-" let s:orange    = '#d7956e'
-" let s:indigo    = '#7681de'
-
-" let s:gray1     = g:quantum_black ? '#212121' : '#263238'
-" let s:gray2     = g:quantum_black ? '#292929' : '#2c3a41'
-" let s:gray3     = g:quantum_black ? '#474646' : '#425762'
-" let s:gray4     = g:quantum_black ? '#6a6c6c' : '#658494'
 let s:gray1 = '#282828'
 let s:gray2 = '#292929'
 let s:gray3 = '#474646'
 let s:gray4 = '#6a6c6c'
-" let s:gray5 = '#a2a2a2'
 let s:gray5 = '#969696'
-" let s:indigo = '#7681de'
-" let s:indigo = '#9383da'
-" let s:indigo = '#9484db'
-let s:indigo = '#b19bca'
+let s:indigo = '#8787af'
 let s:red = "#995977"
 let s:orange = "#a69883"
 let s:yellow = "#b8a683"
@@ -175,6 +153,11 @@ call s:HL('htmlLink',                       s:red,      '',         '')
 call s:HL('htmlTag',                        s:blue,     '',         '')
 call s:HL('htmlTitle',                      s:gray5,    '',         '')
 call s:HL('htmlSpecialTagName',             s:purple,   '',         '')
+
+" Markup languages (HTML, jsx, etc)
+call s:HL('@tag.attribute',                 s:gray5,    '',         'none')
+call s:HL('@tag',                           s:cyan,     '',         'none')
+call s:HL('@constructor.tsx',               s:gray5,    '',         'none')
 
 " Javascript
 call s:HL('javaScriptBraces',               s:gray5,    '',         '')
