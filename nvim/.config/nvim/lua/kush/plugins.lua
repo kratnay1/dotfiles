@@ -22,12 +22,12 @@ return require("packer").startup(function(use)
 	use { "nvim-telescope/telescope.nvim" }
 
 	-- Telescope extensions
-	use { "nvim-telescope/telescope-fzf-writer.nvim" }
-	use { "nvim-telescope/telescope-packer.nvim" }
-	use { "nvim-telescope/telescope-fzy-native.nvim" }
+	-- use { "nvim-telescope/telescope-fzf-writer.nvim" }
+	-- use { "nvim-telescope/telescope-packer.nvim" }
+	-- use { "nvim-telescope/telescope-fzy-native.nvim" }
 	use { "nvim-telescope/telescope-github.nvim" }
 	use { "nvim-telescope/telescope-symbols.nvim" }
-	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+	-- use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 	use { "nvim-telescope/telescope-file-browser.nvim" }
 	use { "nvim-telescope/telescope-ui-select.nvim" }
 	-- clipboard manager that integrates with telescope
@@ -37,10 +37,10 @@ return require("packer").startup(function(use)
 			require("neoclip").setup()
 		end,
 	}
-	if not is_mac then
-		use "nvim-telescope/telescope-cheat.nvim"
-		use { "nvim-telescope/telescope-arecibo.nvim", rocks = { "openssl", "lua-http-parser" } }
-	end
+	-- if not is_mac then
+	-- 	use "nvim-telescope/telescope-cheat.nvim"
+	-- 	use { "nvim-telescope/telescope-arecibo.nvim", rocks = { "openssl", "lua-http-parser" } }
+	-- end
 
 	-- LSP
 	use "neovim/nvim-lspconfig"
@@ -93,7 +93,7 @@ return require("packer").startup(function(use)
 	-- autopairs
 	use "m4xshen/autoclose.nvim"
 
-	-- autotag 
+	-- autotag (for html)
 	use "windwp/nvim-ts-autotag"
 
 	-- fzf
@@ -103,56 +103,56 @@ return require("packer").startup(function(use)
 	-- harpooon (mark and jump between key files)
 	use "theprimeagen/harpoon"
 
-	-- font icons 
-	use "kyazdani42/nvim-web-devicons"
+	-- -- font icons 
+	-- use "kyazdani42/nvim-web-devicons"
 
-	-- tree
-	use "nvim-tree/nvim-tree.lua"
+	-- -- tree
+	-- use "nvim-tree/nvim-tree.lua"
 
-	-- bufferline 
-	use { "akinsho/bufferline.nvim", tag = "v2.*" }
+	-- -- bufferline 
+	-- -- use { "akinsho/bufferline.nvim", tag = "v2.*" }
 
-	-- easily delete, change, and add common surroundings in pairs
-	use "tpope/vim-surround"
+	-- -- easily delete, change, and add common surroundings in pairs
+	-- use "tpope/vim-surround"
 
-	-- comment with gcc, gc + motion
+	-- -- comment with gcc, gc + motion
 	use "tpope/vim-commentary"
 
-	-- navigate seamlessly between vim splits and tmux panes 
-	use "christoomey/vim-tmux-navigator"
+	-- -- navigate seamlessly between vim splits and tmux panes 
+	-- use "christoomey/vim-tmux-navigator"
 
-	-- embed vim statusline in tmux statusline
+	-- -- embed vim statusline in tmux statusline
 	use "vimpostor/vim-tpipeline"
 
-	-- adds a git gutter to indicate modified lines
-	-- use "airblade/vim-gitgutter"
+	-- -- adds a git gutter to indicate modified lines
+	-- -- use "airblade/vim-gitgutter"
 
 	-- simple folding for python
-	use "tmhedberg/SimpylFold"
+	-- use "tmhedberg/SimpylFold"
 
 	-- only update folds on save or when toggling or moving between folds
-	use "Konfekt/FastFold"
+	-- use "Konfekt/FastFold"
 
 	-- pasting with indentation adjusted to destination context
-	use "sickill/vim-pasta"
+	-- use "sickill/vim-pasta"
 
 	-- syntax highlighting for TOML
-	use "cespare/vim-toml"
+	-- use "cespare/vim-toml"
 
 	-- syntax highlighting for javascript
-	use "yuezk/vim-js"
+	-- use "yuezk/vim-js"
 
 	-- syntax highlighting and indenting for React (jsx, tsx)
 	use "maxmellon/vim-jsx-pretty"
 
 	-- vim practice
-	use "ThePrimeagen/vim-be-good"
+	-- use "ThePrimeagen/vim-be-good"
 
 	-- colorschemes
-	use { "catppuccin/nvim", as = "catppuccin" }
-	use { 'embark-theme/vim', as = 'embark' }
-	use { 'RRethy/base16-nvim' }
-	use { "rose-pine/neovim", as = "rose-pine"}
+	-- use { "catppuccin/nvim", as = "catppuccin" }
+	-- use { 'embark-theme/vim', as = 'embark' }
+	-- use { 'RRethy/base16-nvim' }
+	-- use { "rose-pine/neovim", as = "rose-pine"}
 
 	if packer_bootstrap then
 		require("packer").sync()

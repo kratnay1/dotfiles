@@ -162,7 +162,7 @@ nnoremap N Nzz
 nnoremap G Gzz
 
 " vim-commentary
-" nmap <c-_> gcc
+nmap <c-_> gcc
 vmap <c-_> gc
 
 " shebang

@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?.lua;/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1744318430/share/lua/5.1/?/init.lua;/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?.lua;/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1744318430/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1744318430/lib/lua/5.1/?.so"
+local package_path_str = "/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1748459687/share/lua/5.1/?.lua;/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1748459687/share/lua/5.1/?/init.lua;/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1748459687/lib/luarocks/rocks-5.1/?.lua;/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1748459687/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/kushrat/.cache/nvim/packer_hererocks/2.1.1748459687/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,40 +74,15 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  FastFold = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/FastFold",
-    url = "https://github.com/Konfekt/FastFold"
-  },
   LuaSnip = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  SimpylFold = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/SimpylFold",
-    url = "https://github.com/tmhedberg/SimpylFold"
-  },
   ["autoclose.nvim"] = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
     url = "https://github.com/m4xshen/autoclose.nvim"
-  },
-  ["base16-nvim"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/base16-nvim",
-    url = "https://github.com/RRethy/base16-nvim"
-  },
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
-  },
-  catppuccin = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -148,11 +123,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/complextras.nvim",
     url = "https://github.com/tjdevries/complextras.nvim"
-  },
-  embark = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/embark",
-    url = "https://github.com/embark-theme/vim"
   },
   ["fidget.nvim"] = {
     loaded = true,
@@ -230,20 +200,15 @@ _G.packer_plugins = {
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
     url = "https://github.com/AckslD/nvim-neoclip.lua"
   },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-web-devicons"] = {
+  ["nvim-ts-autotag"] = {
     loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -255,40 +220,15 @@ _G.packer_plugins = {
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["rose-pine"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
-  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
-  ["telescope-fzf-native.nvim"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
-    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
-  },
-  ["telescope-fzf-writer.nvim"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/telescope-fzf-writer.nvim",
-    url = "https://github.com/nvim-telescope/telescope-fzf-writer.nvim"
-  },
-  ["telescope-fzy-native.nvim"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
-    url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
-  },
   ["telescope-github.nvim"] = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/telescope-github.nvim",
     url = "https://github.com/nvim-telescope/telescope-github.nvim"
-  },
-  ["telescope-packer.nvim"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/telescope-packer.nvim",
-    url = "https://github.com/nvim-telescope/telescope-packer.nvim"
   },
   ["telescope-symbols.nvim"] = {
     loaded = true,
@@ -305,45 +245,15 @@ _G.packer_plugins = {
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-be-good"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-be-good",
-    url = "https://github.com/ThePrimeagen/vim-be-good"
-  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
   },
-  ["vim-js"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-js",
-    url = "https://github.com/yuezk/vim-js"
-  },
   ["vim-jsx-pretty"] = {
     loaded = true,
     path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
     url = "https://github.com/maxmellon/vim-jsx-pretty"
-  },
-  ["vim-pasta"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-pasta",
-    url = "https://github.com/sickill/vim-pasta"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
-  },
-  ["vim-tmux-navigator"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
-    url = "https://github.com/christoomey/vim-tmux-navigator"
-  },
-  ["vim-toml"] = {
-    loaded = true,
-    path = "/Users/kushrat/.local/share/nvim/site/pack/packer/start/vim-toml",
-    url = "https://github.com/cespare/vim-toml"
   },
   ["vim-tpipeline"] = {
     loaded = true,
@@ -353,14 +263,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: lsp_codelens_extensions.nvim
-time([[Config for lsp_codelens_extensions.nvim]], true)
-try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\24codelens_extensions\frequire\0", "config", "lsp_codelens_extensions.nvim")
-time([[Config for lsp_codelens_extensions.nvim]], false)
 -- Config for: nvim-neoclip.lua
 time([[Config for nvim-neoclip.lua]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
 time([[Config for nvim-neoclip.lua]], false)
+-- Config for: lsp_codelens_extensions.nvim
+time([[Config for lsp_codelens_extensions.nvim]], true)
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\24codelens_extensions\frequire\0", "config", "lsp_codelens_extensions.nvim")
+time([[Config for lsp_codelens_extensions.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
